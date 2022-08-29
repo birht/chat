@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Chat App</title>
+    <link rel="icon" href="b.png">
 </head>
 <body>
 <section>
@@ -12,7 +13,7 @@
         <h2>BIRHAT</h2>
         <form onsubmit="return sendMessage();">
         <div class="inputBox">
-          <input id="message" placeholder="ناما خۆ بنڤیسه" autocomplete="off" required>
+          <input id="message" placeholder="ناما خۆ بنڤیسه" autocomplete="off" required oninvalid="this.setCustomValidity('تشته کی بنڤیسه')" oninput="this.setCustomValidity('')">
         </div>
         <div class="inputBox">
          <input type="submit" value="ناما خۆ ڤرێکه">
@@ -175,7 +176,20 @@ ul li
     align-items: center;
     padding: 5px;
     gap: 4px;
-}
+    }
+    ::selection {
+    color: #000
+    }
+    h2::selection {
+    color: lightblue;
+    background: pink;
+    }
+    ul li::selection {
+    background: pink;
+    }
+    #message::selection {
+    background: pink;
+    }
 </style>
 
 
