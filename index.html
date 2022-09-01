@@ -11,6 +11,7 @@
   <div class="container">
     <div class="form">
         <h2>BIRHAT</h2>
+        <h3>ChatApp</h3>
         <form onsubmit="return sendMessage();">
         <div class="inputBox">
           <input id="message" placeholder="ناما خۆ بنڤیسه" autocomplete="off" required oninvalid="this.setCustomValidity('تشته کی بنڤیسه')" oninput="this.setCustomValidity('')">
@@ -77,23 +78,43 @@ section
     width: 100%;
     height: 100%;
     padding: 20px;
+    padding-top: 20px;
+}
+.form h3
+{
+    position: relative;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+     font-size: 28px;
+     font-weight: 600;
 }
 .form h2
 {
     position: relative;
+    background: linear-gradient(to right, #06599b 10%, #01ef96 50%, #06599b 90%);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: animate 2s linear infinite;
     color: #fff;
-    font-size: 26px;
-    font-weight: 600;
+    font-size: 30px;
     letter-spacing: 1px;
-    margin-bottom: 60px;
+    margin-bottom: -6px;
+}
+@keyframes animate {
+    to {
+        background-position: 200% center;
+    }
 }
 .form h2::before
 {
-    content: 'ChatApp';
+    content: '';
     position: absolute;
-    left: 0;
-    bottom: 0.1px;
-    width: 126px;
+    left: -.5px;
+    bottom: 3px;
+    width: 136px;
     height: 5px;
     background: #fff;
     border-radius: 6px;
@@ -177,20 +198,20 @@ ul li
     align-items: center;
     padding: 5px;
     gap: 4px;
-    }
-    ::selection {
+}
+::selection {
     color: #000
-    }
-    h2::selection {
-    color: lightblue;
+}
+h2::selection {
+   color: lightblue;
     background: pink;
-    }
-    ul li::selection {
+}
+ul li::selection {
+   background: pink;
+}
+#message::selection {
     background: pink;
-    }
-    #message::selection {
-    background: pink;
-    }
+}
 </style>
 
 
