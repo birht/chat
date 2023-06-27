@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Chat App</title>
@@ -24,8 +23,7 @@
         <div class="inputBox">
          <input type="submit" value="ناما خۆ ڤرێکه">
          </div>
-        </form>
-        
+        </form>        
         </div>
    </div>
    <div class="bb">
@@ -35,10 +33,6 @@
 </section>
 </body>
 </html>
-
-
-
-
 <style>
 .d{ 
     font-size: 20px;
@@ -46,20 +40,18 @@
     color: white;
     transition: 0.5s;
     text-decoration: none;
+    position: absolute;
+    transform: translate(-3%, -80%);
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
 }
 .dd{
-   transform: translate(195px, -50px);
-   position: absolute;
+   display: flex;
+   justify-content: flex-end;
    backdrop-filter: blur(40px); 
    transition: 0.5s;
    background: rgba(255, 255, 255, 0.2);
-   border-radius: 10px;
 }
-
-
-
-
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
 *
 {
@@ -270,16 +262,10 @@ ul li::selection {
     background: #385357;
 }
 </style>
-
-
-
-
 <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
- 
+<script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script> 
 <!-- include firebase database -->
 <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-database.js"></script>
- 
 <script>
   // Your web app's Firebase configuration
   const firebaseConfig = {
@@ -293,27 +279,21 @@ ul li::selection {
   };
 // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-
      var myName = prompt("ناڤێ خۆ بنڤیسه");
-</script>
-     
+</script>    
 <script>
     function sendMessage() {
         // get message
         var message = document.getElementById("message").value;
- 
         // save in database
         firebase.database().ref("messages").push().set({
             "sender": myName,
             "message": message
         });
- 
         // prevent form from submitting
         return false;
     }
-</script>
-
-     
+</script>    
 <script>
     // listen for incoming messages
     firebase.database().ref("messages").on("child_added", function (snapshot) {
@@ -328,22 +308,18 @@ ul li::selection {
         }
         html += snapshot.val().sender + " : " + snapshot.val().message;
         html += "</li>";
- 
         document.getElementById("messages").innerHTML += html;
     });
 
     function deleteMessage(self) {
     // get message ID
-    var messageId = self.getAttribute("data-id");
- 
-    // delete message
-    firebase.database().ref("messages").child(messageId).remove();
-}
- 
+    var messageId = self.getAttribute("data-id"); 
+    // delete message 
+           firebase.database().ref("messages").child(messageId).remove();
+} 
 // attach listener for delete message
 firebase.database().ref("messages").on("child_removed", function (snapshot) {
     // remove message node
     document.getElementById("message-" + snapshot.key).innerHTML = "ئه ڤ نامه هاته ژێبرن";
 });
-  </script>
-  
+</script>
