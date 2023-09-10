@@ -303,8 +303,8 @@ ul li::selection {
         var html = "";
         // give each message a unique ID
         html += "<li id='message-" + snapshot.key + "'>";
-        // show delete button if message is sent by me
-        if (snapshot.val().sender == myName) {
+        // show delete button if message is sent by Birhat. 
+        if (snapshot.val().sender == "Birhat. ") {
             html += "<button data-id='" + snapshot.key + "' onclick='deleteMessage(this);'>";
                 html += "ژێبرن";
             html += "</button>";
@@ -315,11 +315,11 @@ ul li::selection {
     });
 
     function deleteMessage(self) {
-    // get message ID
-    var messageId = self.getAttribute("data-id"); 
-    // delete message 
-           firebase.database().ref("messages").child(messageId).remove();
-} 
+        // get message ID
+        var messageId = self.getAttribute("data-id"); 
+        // delete message 
+        firebase.database().ref("messages").child(messageId).remove();
+    }
 // attach listener for delete message
 firebase.database().ref("messages").on("child_removed", function (snapshot) {
     // remove message node
