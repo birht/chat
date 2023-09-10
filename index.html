@@ -284,15 +284,19 @@ ul li::selection {
 </script>    
 <script>
     function sendMessage() {
-        // get message
-        var message = document.getElementById("message").value;
-        // save in database
-        firebase.database().ref("messages").push().set({
-            "sender": myName,
-            "message": message
-        });
-        // prevent form from submitting
-        return false;
+    // get message
+    var message = document.getElementById("message").value;
+    // save in database
+    firebase.database().ref("messages").push().set({
+        "sender": myName, // Make sure myName is used here
+        "message": message
+    });
+    // clear input field
+    document.getElementById("message").value = "";
+    // prevent form from submitting
+    return false;
+}
+
     }
 </script>    
 <script>
