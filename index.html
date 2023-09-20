@@ -35,6 +35,13 @@
 </body>
 </html>
 <style>
+.bb ul li span.sender {
+  background-color: rgba(29, 27, 53, 0.16);
+   font-size: 21px;
+   padding: 2px;
+   border-radius: 10px;
+   color: black;
+}
 .d{ 
     font-size: 20px;
     padding: 10px 15px;
@@ -130,8 +137,8 @@ section
     color: #fff;
     letter-spacing: 1px;
     margin-bottom: 40px;
-     font-size: 28px;
-     font-weight: 600;
+    font-size: 28px;
+    font-weight: 600;
 }
 .form .web{
 user-select: none;
@@ -165,108 +172,111 @@ to {
 }
 .form h2::before
 {
-content: '';
-position: absolute;
-left: -2px;
-bottom: 1px;
-width: 136px;
-height: 5px;
-background: #fff;    
-border-radius: 6px;
-width: 130px;
+ content: '';
+ position: absolute;
+ left: -2px;
+ bottom: 1px;
+ width: 136px;
+ height: 5px;
+ background: #fff;    
+ border-radius: 6px;
+ width: 130px;
 }
 .form .inputBox
 {
-width: 100%;
-margin-top: 20px;
-user-select: none;
+ width: 100%;
+ margin-top: 20px;
+ user-select: none;
 }
 .form .inputBox input
 {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    outline: none;
-    padding: 8px 20px;
-    border-radius: 35px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 16px;
-    letter-spacing: 1px;
-    color: #fff;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+ width: 100%;
+ background: rgba(255, 255, 255, 0.2);
+ border: none;
+ outline: none;
+ padding: 8px 20px;
+ border-radius: 35px;
+ border: 1px solid rgba(255, 255, 255, 0.5);
+ border-right: 1px solid rgba(255, 255, 255, 0.2);
+ border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+ font-size: 16px;
+ letter-spacing: 1px;
+ color: #fff;
+ box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+.form .inputBox #message{
+ height: 3em;
 }
 .form .inputBox input::placeholder
 {
-    color: #fff;
-    font-size: 20px;
+ color: #fff;
+ font-size: 20px;
 }
 .form .inputBox input[type="submit"]
 {
-    background: #fff;
-    padding: 6px;
-    color: #666;
-    max-width: 100%;
-    cursor: pointer;
-    margin-bottom: 20px;
-    font-weight: 600;
-    font-size: 20px;
-    transition: 0.5s;
+ background: #fff;
+ padding: 6px;
+ color: #666;
+ max-width: 100%;
+ cursor: pointer;
+ margin-bottom: 20px;
+ font-weight: 600;
+ font-size: 20px;
+ transition: 0.5s;
 }
 .form .inputBox input[type="submit"]:hover
 {
-    background: #666;
-    color: #fff;
+ background: #666;
+ color: #fff;
 }
 button
 {
-    background: #fff;
-    padding: 8px;
-    border: none;
-    cursor: pointer;
-    border-radius: 35px;
-    font-size: 23px;
-    font-weight: 600;
-    color: #666;
-    transition: 0.5s;
+ background: #fff;
+ padding: 8px;
+ border: none;
+ cursor: pointer;
+ border-radius: 35px;
+ font-size: 23px;
+ font-weight: 600;
+ color: #666;
+ transition: 0.5s;
 }
 button:hover 
 {
-    background: red;
-    padding: 8px;
-    border: none;
-    cursor: pointer;
-    border-radius: 35px;
-    font-size: 23px;
-    font-weight: 600;
-    color: #fff;
+ background: red;
+ padding: 8px;
+ border: none;
+ cursor: pointer;
+ border-radius: 35px;
+ font-size: 23px;
+ font-weight: 600;
+ color: #fff;
 }
 ul li
 {
-    color: #fff;
-    font-size: 20px;
-    position: relative;
-    list-style: none;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-    gap: 4px;
+ color: #fff;
+ font-size: 20px;
+ position: relative;
+ list-style: none;
+ display: flex;
+ text-align: center;
+ justify-content: center;
+ align-items: center;
+ padding: 5px;
+ gap: 4px;
 }
 ::selection {
-    color: #000
+ color: #000
 }
 h2::selection {
-   color: lightblue;
-    background: #385357;
+ color: lightblue;
+ background: #385357;
 }
 ul li::selection {
-   background: #385357;
+ background: #385357;
 }
 #message::selection {
-    background: #385357;
+ background: #385357;
 }
 </style>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -283,10 +293,10 @@ ul li::selection {
     storageBucket: "chat-app-d1123.appspot.com",
     messagingSenderId: "478632601561",
     appId: "1:478632601561:web:4c37c3ac70352100f95bc8"
-  };
-// Initialize Firebase
+};
+    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-     var myName = prompt("ناڤێ خۆ بنڤیسه");
+    var myName = prompt("ناڤێ خۆ بنڤیسه");
 </script>    
 <script>
     function sendMessage() {
@@ -294,41 +304,40 @@ ul li::selection {
     var message = document.getElementById("message").value;
     // save in database
     firebase.database().ref("messages").push().set({
-        "sender": myName, // Make sure myName is used here
-        "message": message
+    "sender": myName, // Make sure myName is used here
+    "message": message
     });
     // clear input field
     document.getElementById("message").value = "";
-    // prevent form from submitting
-    return false;
-    }
+ // prevent form from submitting
+ return false;
+}
 </script>    
 <script>
     // listen for incoming messages
     firebase.database().ref("messages").on("child_added", function (snapshot) {
-        var html = "";
-        // give each message a unique ID
-        html += "<li id='message-" + snapshot.key + "'>";
-        // show delete button if message is sent by Birhat. 
-        if (snapshot.val().sender == "Birhat. ") {
-            html += "<button data-id='" + snapshot.key + "' onclick='deleteMessage(this);'>";
-                html += "ژێبرن";
-            html += "</button>";
-        }
-        html += snapshot.val().sender + " : " + snapshot.val().message;
-        html += "</li>";
-        document.getElementById("messages").innerHTML += html;
-    });
-
+    var html = "";
+    // give each message a unique ID
+    html += "<li id='message-" + snapshot.key + "'>";
+    // show delete button if message is sent by "Birhat. "
+    if (snapshot.val().sender == myName && myName == "Birhat. ") {
+    html += "<button data-id='" + snapshot.key + "' onclick='deleteMessage(this);'>";
+    html += "ژێبرن";
+    html += "</button>";
+}
+html += "<span class='sender'>" + snapshot.val().sender + "</span> : " + snapshot.val().message;
+html += "</li>";
+ document.getElementById("messages").innerHTML += html;
+});
     function deleteMessage(self) {
-        // get message ID
-        var messageId = self.getAttribute("data-id"); 
-        // delete message 
-        firebase.database().ref("messages").child(messageId).remove();
+    // get message ID
+    var messageId = self.getAttribute("data-id"); 
+    // delete message 
+    firebase.database().ref("messages").child(messageId).remove();
     }
 // attach listener for delete message
 firebase.database().ref("messages").on("child_removed", function (snapshot) {
     // remove message node
-    document.getElementById("message-" + snapshot.key).innerHTML = "ئه ڤ نامه هاته ژێبرن";
+ document.getElementById("message-" + snapshot.key).innerHTML = "ئه ڤ نامه هاته ژێبرن";
 });
 </script>
