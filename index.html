@@ -53,6 +53,7 @@
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     user-select: none;
+    scroll-behavior: smooth;
 }
 .dd{
    display: flex;
@@ -88,10 +89,10 @@ section
 }
 .container
 {
-    margin-top: -340px;
+    margin-top: -250px;
     position: absolute;
-    width: 90%;
-    min-height: 290px;
+    width: 60%;
+    min-height: 260px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px 10px 0 0;
     display: flex;
@@ -104,13 +105,13 @@ section
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 .bb {
-    margin-top: 230px;
+    margin-top: 270px;
     overflow-y: auto;
     position: absolute;
-    width: 90%;
-    max-height: 280px;
+    width: 60%;
+    max-height: 258px;
     align-items: center;
-    min-height: 280px;
+    min-height: 258px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 0px 0 10px 10px;
     backdrop-filter: blur(5px);
@@ -118,14 +119,16 @@ section
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    scroll-behavior: smooth;
 }
 .bb::-webkit-scrollbar {
     width: 0px;
+    overflow-y: scroll;
 }
 .form
 {
     position: relative;
-    width: 100%;
+    width: 90%;
     height: 100%;
     padding: 20px;
     padding-bottom: 0px;
